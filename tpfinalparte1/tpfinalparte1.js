@@ -11,7 +11,7 @@ function inicializarCreditos() {
     "Carlos Adrian Puebla / Ailin Nahir Mercado",
     "Comisión 5 "
   ];
-  return textos; // Retorna un arreglo (Igual que en tu TP1)
+  return textos;
 }
 function cambiarEstadoCreditos(nuevoEstado) {
   estadoCreditos = nuevoEstado;
