@@ -275,7 +275,7 @@ function inicializarEscenas() {
 
     {
       id: "encrucijada",
-      title: "La Encrucijada — Elegí un camino",
+      title: "Elegí un camino",
       text: [],
       image: "4",
       pantalladiv: true,
