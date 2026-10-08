@@ -368,8 +368,7 @@ function inicializarEscenas() {
       "FIN."],
       
     image: "15final3",
-    choices:
-    [ { l:"Volver al inicio", to:0 }]
+    choices: [ { l:"Volver al inicio", to:0 }]
   }
   ];
 }
