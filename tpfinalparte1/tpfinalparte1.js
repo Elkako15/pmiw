@@ -96,7 +96,7 @@ function dibujarIntro() {
 function dibujarJuego() {
   let esc = escenas[escenaIndex];
 
-  if (esc.splitScreen) {
+  if (esc.pantalladiv) {
     dibujarPantallaDividida(esc);
     return;
   }
@@ -213,7 +213,7 @@ function mousePressed() {
 
   let esc = escenas[escenaIndex];
 
-  if (esc.splitScreen) {
+  if (esc.pantalladiv) {
     let zonas = esc.splitZones || 3;
     let anchoZona = width / zonas;
 
@@ -275,10 +275,10 @@ function inicializarEscenas() {
 
     {
       id: "encrucijada",
-      title:  "Elegí un camino",
+      title: "La Encrucijada — Elegí un camino",
       text: [],
       image: "4",
-      splitScreen: true,
+      pantalladiv: true,
       splitZones: 3,
       splitLabels: ["Nave Vertakraft", "Nido del Ave", "Selva de Hongos"],
       splitTargets: [4, 7, 12],
@@ -343,7 +343,7 @@ function inicializarEscenas() {
       title: "El Nido del Ave — Elegí",
       text: [],
       image: "9",
-      splitScreen: true,
+      pantalladiv: true,
       splitZones: 2,
       splitLabels: ["Lomo del Ave", "Cueva de Cristal"],
       splitTargets: [9, 10],
