@@ -135,7 +135,7 @@ function dibujarJuego() {
   let btnH = 30;
   for (let i = 0; i < esc.opciones.length; i++) {
     let bx = 18 + (i % 2) * (btnW + 12);
-    let by = 408 + Math.floor(i / 2) * (btnH + 6);
+    let by = 408 + (i / 2) * (btnH + 6);
 
     fill(71, 187, 178);
     rect(bx, by, btnW, btnH, 6);
