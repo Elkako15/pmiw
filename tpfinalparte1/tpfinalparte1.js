@@ -133,7 +133,7 @@ function dibujarJuego() {
   botonAreas = [];
   let btnW = 370;
   let btnH = 30;
-  for (let i = 0; i < esc.choices.length; i++) {
+  for (let i = 0; i < esc.opciones.length; i++) {
     let bx = 18 + (i % 2) * (btnW + 12);
     let by = 408 + Math.floor(i / 2) * (btnH + 6);
 
@@ -143,15 +143,15 @@ function dibujarJuego() {
     fill(20);
     textSize(13);
     textAlign(LEFT, CENTER);
-    text(esc.choices[i].l, bx + 10, by + btnH / 2);
+    text(esc.opciones[i].l, bx + 10, by + btnH / 2);
     textAlign(LEFT, TOP);
 
-    botonAreas.push({ x: bx, y: by, w: btnW, h: btnH, to: esc.choices[i].to });
+    botonAreas.push({ x: bx, y: by, w: btnW, h: btnH, to: esc.opciones[i].to });
   }
 }
 
 function dibujarPantallaDividida(esc) {
-  let zonas = esc.splitZones || 3;
+  let zonas = esc.divZonas || 3;
   let anchoZona = width / zonas;
 
   if (imgs[esc.image]) {
@@ -164,7 +164,7 @@ function dibujarPantallaDividida(esc) {
   fill(0, 100);
   rect(0, 0, width, height);
 
-  let etiquetas = esc.splitLabels || ["Zona A", "Zona B", "Zona C"];
+  let etiquetas = esc.niveles || ["Zona A", "Zona B", "Zona C"];
   textAlign(CENTER, CENTER);
   textStyle(BOLD);
 
@@ -214,14 +214,14 @@ function mousePressed() {
   let esc = escenas[escenaIndex];
 
   if (esc.pantalladiv) {
-    let zonas = esc.splitZones || 3;
+    let zonas = esc.divZonas || 3;
     let anchoZona = width / zonas;
 
     let zonaClic = 0;
     if (mouseX > anchoZona)     zonaClic = 1;
     if (mouseX > anchoZona * 2) zonaClic = 2;
 
-    let destino = esc.splitTargets[zonaClic];
+    let destino = esc.destinos[zonaClic];
     if (destino !== undefined) {
       escenaIndex = destino;
     }
@@ -244,7 +244,7 @@ function inicializarEscenas() {
       title: "El Reino Subterráneo",
       text: ["Hacé clic para comenzar la aventura."],
       image: "1",
-      choices: [{ l: "Comenzar la aventura", to: 1 }]
+      opciones: [{ l: "Comenzar la aventura", to: 1 }]
     },
 
     {
@@ -257,7 +257,7 @@ function inicializarEscenas() {
         "El viento helado silba en tus oídos y la luz se apaga sobre ti."
       ],
       image: "2",
-      choices: [{ l: "Continuar descendiendo...", to: 2 }]
+      opciones: [{ l: "Continuar descendiendo...", to: 2 }]
     },
 
     {
@@ -270,7 +270,7 @@ function inicializarEscenas() {
         "zumbido electromagnético que resuena en las paredes de roca."
       ],
       image: "3",
-      choices: [{ l: "Inspeccionar la caverna...", to: 3 }]
+      opciones: [{ l: "Inspeccionar la caverna...", to: 3 }]
     },
 
     {
@@ -279,10 +279,10 @@ function inicializarEscenas() {
       text: [],
       image: "4",
       pantalladiv: true,
-      splitZones: 3,
-      splitLabels: ["Nave Vertakraft", "Nido del Ave", "Selva de Hongos"],
-      splitTargets: [4, 7, 12],
-      choices: []
+      divZonas: 3,
+      niveles: ["Nave Vertakraft", "Nido del Ave", "Selva de Hongos"],
+      destinos: [4, 7, 12],
+      opciones: []
     },
 
     {
@@ -295,7 +295,7 @@ function inicializarEscenas() {
         "Un motor oculto vibra intensamente bajo tus pies."
       ],
       image: "5",
-      choices: [{ l: "Tomar el control de la nave", to: 5 }]
+      opciones: [{ l: "Tomar el control de la nave", to: 5 }]
     },
 
     {
@@ -307,7 +307,7 @@ function inicializarEscenas() {
         "El indicador de gravedad oscila sin control hacia valores negativos."
       ],
       image: "6",
-      choices: [{ l: "Activar los propulsores de rescate", to: 6 }]
+      opciones: [{ l: "Activar los propulsores de rescate", to: 6 }]
     },
 
     {
@@ -322,7 +322,7 @@ function inicializarEscenas() {
         "FIN."
       ],
       image: "7final1",
-      choices: [{ l: "Volver al inicio", to: 0 }]
+      opciones: [{ l: "Volver al inicio", to: 0 }]
     },
 
     {
@@ -335,7 +335,7 @@ function inicializarEscenas() {
         "sombra gigantesca."
       ],
       image: "8",
-      choices: [{ l: "Acercarte a su refugio", to: 8 }]
+      opciones: [{ l: "Acercarte a su refugio", to: 8 }]
     },
 
     {
@@ -344,10 +344,10 @@ function inicializarEscenas() {
       text: [],
       image: "9",
       pantalladiv: true,
-      splitZones: 2,
-      splitLabels: ["Lomo del Ave", "Cueva de Cristal"],
-      splitTargets: [9, 10],
-      choices: []
+      divZonas: 2,
+      niveles: ["Lomo del Ave", "Cueva de Cristal"],
+      destinos: [9, 10],
+      opciones: []
     },
 
     {
@@ -359,7 +359,7 @@ function inicializarEscenas() {
         "ascienden a toda velocidad por la gran chimenea volcánica."
       ],
       image: "A10",
-      choices: [{ l: "Salir a la superficie", to: 11 }]
+      opciones: [{ l: "Salir a la superficie", to: 11 }]
     },
 
     {
@@ -371,7 +371,7 @@ function inicializarEscenas() {
         "para que saltes sobre ella en pleno vuelo."
       ],
       image: "B10",
-      choices: [{ l: "Ascender a la superficie", to: 11 }]
+      opciones: [{ l: "Ascender a la superficie", to: 11 }]
     },
 
     {
@@ -386,7 +386,7 @@ function inicializarEscenas() {
         "FIN."
       ],
       image: "11final2",
-      choices: [{ l: "Volver al inicio", to: 0 }]
+      opciones: [{ l: "Volver al inicio", to: 0 }]
     },
 
     {
@@ -399,7 +399,7 @@ function inicializarEscenas() {
         "tenés armas, te conducen ante el pergamino de su Gran Arton."
       ],
       image: "12",
-      choices: [{ l: "Leer el pergamino", to: 13 }]
+      opciones: [{ l: "Leer el pergamino", to: 13 }]
     },
 
     {
@@ -412,7 +412,7 @@ function inicializarEscenas() {
         "Un ambiente de tensión precede a lo que podría ser una guerra."
       ],
       image: "13",
-      choices: [{ l: "Convocar a ambas tribus", to: 14 }]
+      opciones: [{ l: "Convocar a ambas tribus", to: 14 }]
     },
 
     {
@@ -425,7 +425,7 @@ function inicializarEscenas() {
         "acuerdan un tratado de paz."
       ],
       image: "14",
-      choices: [{ l: "Sellar la alianza", to: 15 }]
+      opciones: [{ l: "Sellar la alianza", to: 15 }]
     },
 
     {
@@ -439,7 +439,7 @@ function inicializarEscenas() {
         "FIN."
       ],
       image: "15final3",
-      choices: [{ l: "Volver al inicio", to: 0 }]
+      opciones: [{ l: "Volver al inicio", to: 0 }]
     }
   ];
 }
